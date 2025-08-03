@@ -1,0 +1,574 @@
+*{box-sizing: border-box;}
+
+body{background-color: #F8F4E1;}
+
+@font-face{font-family: 'playfair'; src: url(fonts/Playfair_Display/PlayfairDisplay-Regular.woff)}
+
+
+/* css page animations */
+@keyframes appear {
+    from{
+        opacity: 0;
+        scale: 0.5;
+    }
+    to{
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+
+@keyframes slide {
+    from{
+        opacity: 0;
+        transform: translateX(-200px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes slideR {
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes grow {
+    from{
+        opacity: 0;
+        /* creates a region, parts inside region are shown, outisde is hidden */
+        /* inset defines an inset from its edges, creating a rect */
+        clip-path: inset(100% 100% 0 0);
+    }
+    to{
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes rotate {
+    0%{rotate:0deg}
+    25%{rotate:45deg}
+    50%{rotate:90deg}
+    75%{rotate:180deg}
+    100%{rotate:270deg}
+}
+
+.rotate{
+    animation: rotate 2.5s;
+}
+
+.expand {
+    animation: appear linear;
+
+    /* anim happens only when element is visible on screen */
+    animation-timeline: view();
+
+    /* anim happens when element starts entering viewport */
+    /* makes sure anim is complete by the time element reaches 40% of viewport */
+    animation-range: entry 0 cover 40%; 
+
+}
+
+.slideleft{
+    animation: slide linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 35%; 
+}
+
+.slideright{
+    animation: slideR linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 40%; 
+}
+
+.grow{
+    animation: grow linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 50%; 
+}
+
+
+.page{
+    width:auto;
+    height:auto;
+    border:1px solid black; 
+    background-color: #c4a07c;
+}
+
+.active{
+    background-color: #F8F4E1;
+    color: #c4a07c;
+}
+
+
+
+/* img sprite */
+.sprite{position: relative; cursor: pointer;}
+
+.sprite:hover{
+    transform: scale(1.2);
+    transition: transform 0.5s ease;
+    z-index: 5;
+    opacity: 75%;
+}
+
+.sprite:hover .spritep {
+    opacity: 1;
+    visibility: visible;
+}
+
+.spritep {
+    position: absolute;
+    /* Position below the sprite */
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    background: white;
+    color: rgb(37, 37, 37);
+    font-size: 1em;
+    padding: 15px;
+    margin: 0;
+    border-radius: 8px;
+    z-index: 10;
+}
+
+.tall {
+    top: 10%;
+}
+
+.sprite1 {
+    /* position:relative; */
+	background: url('images/types_of_coffee_1.png') no-repeat -129px -53px;
+	width: 222px;
+	height: 151px;
+}
+
+
+.sprite2 {
+    /* position:relative; */
+	background: url('images/types_of_coffee_1.png') no-repeat -430px -307px;
+	width: 254px;
+	height: 153px;
+}
+
+
+.sprite3 {
+    /* position:relative; */
+	background: url('images/types_of_coffee_1.png') no-repeat -747px -284px;
+	width: 250px;
+	height: 191px;
+    
+}
+
+
+.sprite4 {
+    /* position:relative; */
+	background: url('images/types_of_coffee_1.png') no-repeat -93px -590px;
+	width: 248px;
+	height: 135px;
+    
+}
+
+
+.sprite5 {
+    /* position:relative; */
+	background: url('images/types_of_coffee_2.png') no-repeat -383px -64px;
+	width: 311px;
+	height: 177px;
+    
+}
+
+
+.sprite6 {
+    /* position:relative; */
+	background: url('images/types_of_coffee_2.png') no-repeat -736px -8px;
+	width: 251px;
+	height: 227px;
+    
+}
+
+
+.sprite7 {
+    /* position:relative; */
+	background: url('images/types_of_coffee_2.png') no-repeat -75px -309px;
+	width: 272px;
+	height: 255px;
+    
+}
+
+
+.sprite8 {
+    /* position:relative; */
+	background: url('images/types_of_coffee_2.png') no-repeat -404px -326px;
+	width: 259px;
+	height: 235px;
+    
+}
+
+
+.sprite9 {
+    /* position:relative; */
+	background: url('images/types_of_coffee_2.png') no-repeat -727px -612px;
+	width: 252px;
+	height: 297px;
+    
+}
+
+
+
+
+
+section{
+    margin:8px; padding:5px;
+}
+
+article{margin: 2% 10px 5%;}
+
+p, a{
+    font-family: 'playfair', 'Times New Roman', Times, serif;
+    font-size: 18px; 
+    margin: 13px; 
+    padding: 5px;
+}
+
+header{
+    background-color: #ead2b9; color: #543310;
+    height: 3em;
+    font-size: 1.5em;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1:not(.header){
+    color: #543310;
+    font-size: 1.7em;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h3{
+    width:max-content;
+    font-size: 1.4em;
+}
+
+#history{padding:5px 10%; background-color: #967a5f;}
+
+/* nav bar */
+#hamIcon{display:none;}
+
+nav{margin: 3% 5%; height:auto;}
+
+nav ul {display: flex; justify-content: space-evenly;}
+
+nav ul li{
+    display:inline; 
+    transform: scale(1.8);
+}
+
+button {cursor: pointer;}
+#btnFS{font-size: 0.9em;}
+
+#page1btn, #page2btn, #page3btn{
+    border: 2px solid grey;
+    background-color: rgb(255, 255, 255);
+}
+
+#page1btn:hover, #page2btn:hover, #page3btn:hover{
+    background-color: #F8F4E1;
+    color: #c4a07c;
+}
+ul li {list-style-type: none;}
+
+
+img {padding: 5px; margin: 8px; }
+.floatimg {float:left; justify-self: center;}
+.floatimgR {
+    float:right; 
+    justify-self: center;
+    margin-top: 0%;
+    padding-top: 0%;
+}
+.clearfloat{float:none; clear:both;}
+
+/* minigame */
+#startBtndiv{
+    margin-left: 8px;
+}
+
+#moveBtndiv{
+    display: block;
+    margin: 1% 10% 1% 45%;
+}
+
+
+#gameBtn, #leftBtn, #rightBtn{
+    font-size: 18px;
+    font-weight: bold;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid grey;
+}
+
+#leftBtn, #rightBtn{margin: 0 8%; font-size: 1.7em;}
+
+#gameBtn:hover, #leftBtn:hover, #rightBtn:hover{
+    background-color: rgb(224, 224, 224);
+} 
+
+#minigamediv{
+    width:fit-content;
+    margin:8px auto; padding:5px;
+}
+
+
+#minigame {
+    border: 5px solid rgb(114, 87, 67);
+    margin:8px 33%; padding:5px;
+    background: rgb(177, 135, 102);
+    height: 550px;
+    width: 500px;
+    position: relative;
+}
+
+
+
+#coffeebean{
+    position: relative;
+}
+
+#cup{
+    margin: 8px;
+    background: rgb(221, 221, 221);
+    width: 120px;
+    height: 50px;
+    border-radius: 0 0 100px 100px; 
+    position: absolute; 
+    left: 0;
+    bottom: 0;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#handle{
+    margin-left: 80%;
+    background: rgb(221, 221, 221);
+    width: 70px;
+    height: 40px;
+    border-radius: 50%; 
+    position: relative; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    rotate: 30deg;
+}
+
+
+.disappear {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+/*RWD*/
+@media (max-width:800px){
+    p{font-size: 1.4em;}
+    /*make a menu items vertical*/
+    nav ul li{
+        display:block; 
+        transform:scale(1.5); 
+        margin: 5px 20%;
+        padding: 5px;
+    }
+
+    #page1btn, #page2btn, #page3btn{
+        border: 2px solid gray;
+        width: 122px;
+    }
+    
+    /* unhide menu icon */
+    #hamIcon{
+        display:block;
+        transform:scale(1.5);
+        /* margin: 8px 4%;  */
+        border: 2px solid gray;
+    }
+
+    /*hide the menu item list*/
+    nav ul{display:none;}
+
+    .menuShow{display:block;}
+
+    /* turns page1 elements into a single column */
+    #page1gridcontainer{
+        display:grid;
+        margin: 10px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(8, auto);
+    }
+
+    .plant1header,.plant2header,.plant3header,.plant4header{
+        font-family: 'playfair'; 
+        font-size: 1.5em;
+        grid-column: 1/3; 
+        justify-self: center;
+    }
+
+    .plant1img, .plant2img, .plant3img, .plant4img{display: block; margin:auto;}
+
+    .plant1header{grid-row: 1/2;}
+    .plant1img{grid-row: 2/3; grid-column: 1/2; }
+    .plant1 {grid-row: 2/3; grid-column: 2/3;}
+
+    .plant2header{grid-row: 3/4;}
+    .plant2img{grid-row: 4/5; grid-column: 1/2;}
+    .plant2 {grid-row: 4/5; grid-column: 2/3;}
+
+    .plant3header{grid-row: 5/6;}
+    .plant3img{grid-row: 6/7; grid-column: 1/2;}
+    .plant3 {grid-row: 6/7; grid-column: 2/3;}
+
+    .plant4header{grid-row: 7/8;}
+    .plant4img{grid-row: 8/9; grid-column: 1/2;}
+    .plant4{grid-row: 8/9; grid-column: 2/3;}
+
+    #history{padding: 5px;}
+
+    #page3gridcontainer{
+        background: rgb(225, 223, 223);
+        margin: 5px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, auto);
+        grid-gap: 1em;
+        background-color: #967a5f;
+    }
+
+    .brew1{grid-row: 1/2;}
+    .brew2{grid-row: 2/3;}
+    .brew3{grid-row: 3/4;}
+
+    .brew4{grid-row: 5/6;}
+    .brew5{grid-row: 4/5;}
+    .brew6{grid-row: 6/7;}
+
+    .brewimg{display: block; margin: 1% auto;}
+
+    #page3spritegrid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(5, 1fr);
+    }
+
+    .sprite1{grid-row: 1/2; grid-column: 1/2; justify-self: center;}
+    .sprite2{grid-row: 1/2; grid-column: 2/3; justify-self: center;}
+
+    .sprite3{grid-row: 2/3; grid-column: 1/2; justify-self: center;}
+    .sprite4{grid-row: 2/3; grid-column: 2/3; justify-self: center;}
+
+    .sprite5{grid-row: 3/4; grid-column: 1/2; justify-self: center;}
+    .sprite6{grid-row: 3/4; grid-column: 2/3; justify-self: center;}
+
+    .sprite7{grid-row: 4/5; grid-column: 1/2; justify-self: center;}
+    .sprite8{grid-row: 4/5; grid-column: 2/3; justify-self: center;}
+    
+    .sprite9{grid-row: 5/6; grid-column: 1/2; justify-self: center;}
+
+    .spritep{font-size: 1em;}
+
+    .slideleft, .slideright, .expand, .grow{animation: none;}
+
+    #moveBtndiv, #minigame{margin: 1% 19%;}
+
+    #moveBtndiv{display: block; margin: 1% 10% 1% 33%;}
+
+    .qrcode{display:none;}
+}
+
+/* desktop view */
+@media (min-width:800px){
+    p{font-size: 1.3em;}
+    #page1gridcontainer{
+        margin: 10px;
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: auto 1fr auto 1fr;
+    }
+
+    .plant1header{grid-row: 1/2; grid-column: 1/3; justify-self: center;}
+    .plant1img{grid-row: 2/3; grid-column: 1/2;}
+    .plant1 {grid-row: 2/3; grid-column: 2/3;}
+
+    .plant2header{grid-row: 1/2; grid-column: 3/5; justify-self: center;}
+    .plant2img{grid-row: 2/3; grid-column: 3/4;}
+    .plant2 {grid-row: 2/3; grid-column: 4/5;}
+
+    .plant3header{grid-row: 3/4; grid-column: 1/3; justify-self: center;}
+    .plant3img{grid-row: 4/5; grid-column: 1/2;}
+    .plant3 {grid-row: 4/5; grid-column: 2/3;}
+
+    .plant4header{grid-row: 3/4; grid-column: 3/5; justify-self: center;}
+    .plant4img{grid-row: 4/5; grid-column: 3/4;}
+    .plant4{grid-row: 4/5; grid-column: 4/5;}
+
+
+    #page3gridcontainer{
+        background: rgb(225, 223, 223);
+        margin: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr ;
+        grid-template-rows: 1fr 0.7fr;
+        grid-gap: 2em;
+        background-color: #967a5f;
+    }
+
+    .brew1{grid-row: 1/2; grid-column: 1/2; justify-self: center;}
+    .brew2{grid-row: 1/2; grid-column: 2/3; justify-self: center;}
+    .brew3{grid-row: 1/2; grid-column: 3/4; justify-self: center;}
+
+    .brew4{grid-row: 2/3; grid-column: 1/2; justify-self: center;}
+    .brew5{grid-row: 2/3; grid-column: 2/3; justify-self: center;}
+    .brew6{grid-row: 2/3; grid-column: 3/4; justify-self: center;}
+
+    #page3spritegrid{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .sprite1{grid-row: 1/2; grid-column: 1/2; justify-self: center;}
+    .sprite2{grid-row: 1/2; grid-column: 2/3; justify-self: center;}
+    .sprite3{grid-row: 1/2; grid-column: 3/4; justify-self: center;}
+    .sprite4{grid-row: 2/3; grid-column: 1/2; justify-self: center;}
+    .sprite5{grid-row: 2/3; grid-column: 2/3; justify-self: center;}
+    .sprite6{grid-row: 2/3; grid-column: 3/4; justify-self: center;}
+    .sprite7{grid-row: 3/4; grid-column: 1/2; justify-self: center;}
+    .sprite8{grid-row: 3/4; grid-column: 2/3; justify-self: center;}
+    .sprite9{grid-row: 3/4; grid-column: 3/4; justify-self: center;}
+
+    #moveBtndiv{margin: 1% 10% 1% 36%;}
+
+    .qrcode{display:block;}
+}
+
